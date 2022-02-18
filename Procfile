@@ -1,1 +1,1 @@
-web: gunicorn name_space:app
+web: gunicorn app:app
