@@ -10,7 +10,7 @@ from tensorflow import keras
 import numpy as np
 #from flask_restplus import Api, Resource, fields
 flask_app=Flask(__name__,static_folder='heart_frontend/build',static_url_path='')
-CORS(flask_app)
+#CORS(flask_app)
 #flask_app.wsgi_app=ProxyFix(flask_app.wsgi_app)
 app=Api(app=flask_app,
         version="1.0",
