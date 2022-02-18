@@ -1,15 +1,15 @@
 from flask import Flask, request,jsonify,make_response, send_from_directory
 from flask_restx import Api, Resource, fields
 
-from flask_cors import CORS
+from flask_cors import CORS,cross_origin
 from tensorflow import keras
 
 import numpy as np
 
-flask_app=Flask(__name__,static_folder='heart_frontend/build',static_url_path='')
-#CORS(flask_app)
+app=Flask(__name__,static_folder='heart_frontend/build',static_url_path='')
+CORS(app)
 #flask_app.wsgi_app=ProxyFix(flask_app.wsgi_app)
-app=Api(app=flask_app,
+app=Api(app=app,
         version="1.0",
         title="Heart Disease Prediction")
 
@@ -36,9 +36,7 @@ class MainClass(Resource):
         response.headers.add('Access-Control-Allow-Methods',"*")
 
         return response
-    def serve():
-        return send_from_directory(app.static_folder,'index.html')
-
+    
 
     @app.expect(model)
     def post(self):
@@ -66,6 +64,11 @@ class MainClass(Resource):
                 "status":"Prediction Could not be made",
                 "error":str(error)
             })
+@app.route('/')
+@cross_origin()
+def serve():
+        return send_from_directory(app.static_folder,'index.html')
+
 
 if __name__=="__main__":
-    app.run(host='0.0.0.0')
+    app.run()
