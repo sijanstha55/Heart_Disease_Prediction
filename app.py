@@ -1,5 +1,5 @@
 from flask import Flask, request,jsonify,make_response, send_from_directory
-#from flask_restx import Api, Resource, fields
+from flask_restx import Api, Resource, fields
 #from werkzeug.middleware.proxy_fix import ProxyFix
 from flask_cors import CORS
 from tensorflow import keras
@@ -8,7 +8,7 @@ from tensorflow import keras
 #from werkzeug.utils import cached_property
 #import time
 import numpy as np
-from flask_restplus import Api, Resource, fields
+#from flask_restplus import Api, Resource, fields
 flask_app=Flask(__name__,static_folder='heart_frontend/build',static_url_path='')
 #CORS(flask_app)
 #flask_app.wsgi_app=ProxyFix(flask_app.wsgi_app)
@@ -39,6 +39,9 @@ class MainClass(Resource):
         response.headers.add('Access-Control-Allow-Methods',"*")
 
         return response
+    def serve():
+        return send_from_directory(app.static_folder,'index.html')
+
 
     @app.expect(model)
     def post(self):
@@ -66,10 +69,6 @@ class MainClass(Resource):
                 "status":"Prediction Could not be made",
                 "error":str(error)
             })
-@app.route('/')
-def serve():
-    return send_from_directory(app.static_folder,'index.html')
-
 
 if __name__=="__main__":
     app.run(host='0.0.0.0')
