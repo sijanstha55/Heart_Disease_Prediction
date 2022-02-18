@@ -1,14 +1,11 @@
 from flask import Flask, request,jsonify,make_response, send_from_directory
 from flask_restx import Api, Resource, fields
-#from werkzeug.middleware.proxy_fix import ProxyFix
+
 from flask_cors import CORS
 from tensorflow import keras
-#import json
-#import tensorflow as tf
-#from werkzeug.utils import cached_property
-#import time
+
 import numpy as np
-#from flask_restplus import Api, Resource, fields
+
 flask_app=Flask(__name__,static_folder='heart_frontend/build',static_url_path='')
 #CORS(flask_app)
 #flask_app.wsgi_app=ProxyFix(flask_app.wsgi_app)
