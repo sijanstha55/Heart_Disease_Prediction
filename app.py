@@ -1,4 +1,4 @@
-from flask import Flask, request,jsonify,make_response
+from flask import Flask, request,jsonify,make_response, send_from_directory
 from flask_restx import Api, Resource, fields
 #from werkzeug.middleware.proxy_fix import ProxyFix
 from flask_cors import CORS
@@ -66,7 +66,9 @@ class MainClass(Resource):
                 "status":"Prediction Could not be made",
                 "error":str(error)
             })
-
+@app.route('/')
+def serve():
+    return send_from_directory(app.static_folder,'index.html')
 
 
 if __name__=="__main__":
