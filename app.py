@@ -28,7 +28,7 @@ model=api.model('Parameters',
 predictor=keras.models.load_model('heart_model')
 @name_space.route("/")
 class MainClass(Resource):
-    def serve(self):
+    def get(self):
         return send_from_directory(app.static_folder, 'index.html')
     def options(self):
         response=make_response()
