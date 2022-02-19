@@ -14,7 +14,7 @@ api=Api(app=app,
         title="Heart Disease Prediction")
 
 name_space=api.namespace('prediction',description="Prediction Api")
-model=app.model('Parameters',
+model=api.model('Parameters',
                         {'thal':fields.Integer(required=True),
                         'slope':fields.Integer(required=True),
                         'cp':fields.Integer(required=True),
