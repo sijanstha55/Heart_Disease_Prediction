@@ -38,7 +38,7 @@ class MainClass(Resource):
         return response
     
 
-    @app.expect(model)
+    @api.expect(model)
     def post(self):
         try:
             inputValues=request.json
