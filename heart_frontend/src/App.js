@@ -51,7 +51,7 @@ function App() {
     const userData=inputValues;
     console.log(userData);
     setLoading(true);
-    fetch('http://heart-disease-p.herokuapp.com/prediction/',
+    fetch('https://heart-disease-p.herokuapp.com/prediction/',
     {
       headers:{
 
