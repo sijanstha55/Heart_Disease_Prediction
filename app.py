@@ -9,11 +9,11 @@ import numpy as np
 app=Flask(__name__,static_folder='heart_frontend/build',static_url_path='')
 CORS(app)
 #flask_app.wsgi_app=ProxyFix(flask_app.wsgi_app)
-app=Api(app=app,
+api=Api(app=app,
         version="1.0",
         title="Heart Disease Prediction")
 
-name_space=app.namespace('prediction',description="Prediction Api")
+name_space=api.namespace('prediction',description="Prediction Api")
 model=app.model('Parameters',
                         {'thal':fields.Integer(required=True),
                         'slope':fields.Integer(required=True),
@@ -64,10 +64,6 @@ class MainClass(Resource):
                 "status":"Prediction Could not be made",
                 "error":str(error)
             })
-@app.route('/')
-@cross_origin()
-def serve():
-        return send_from_directory(app.static_folder,'index.html')
 
 
 if __name__=="__main__":
