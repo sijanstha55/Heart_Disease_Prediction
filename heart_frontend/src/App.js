@@ -2,11 +2,16 @@ import logo from './logo.svg';
 import './App.css';
 import React, {useState, useEffect} from 'react';
 import Form from 'react-bootstrap/Form';
+import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import {Container, Row, Col} from 'react-bootstrap';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import InputForm from './components/InputForm';
+//import {TextField,InputLabel,MenuItem,Select,Grid, Card} from '@mui/material';
+
+
 function App() {
   const [inputValues, setInputValues]= useState({
     age:20,
@@ -89,6 +94,7 @@ function App() {
 
   }*/
 
+  
   
   return (
     <div className="App">
@@ -203,14 +209,14 @@ function App() {
             <option value={4}>4</option>
           </Form.Select>
         </Form.Group>
-        {result}
+       
         <Form.Group>
         <Popup trigger={<Button variant="primary" type="submit">
           Submit
         </Button>}
         modal
         nested>
-          <p>{result}</p>
+          <p>You have {result*100} percent chance of having a heart disease!</p>
         </Popup>
         </Form.Group>
       </Form>

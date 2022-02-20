@@ -13,7 +13,7 @@ api=Api(app=app,
         version="1.0",
         title="Heart Disease Prediction")
 
-name_space=api.namespace('prediction',description="Prediction Api")
+name_space=api.namespace('',description="Prediction Api")
 model=api.model('Parameters',
                         {'thal':fields.Integer(required=True),
                         'slope':fields.Integer(required=True),
@@ -54,7 +54,7 @@ class MainClass(Resource):
             response=jsonify({
                 "statusCode":200,
                 "status":"Prediction made",
-                "result":types[round(prediction[0][0])]
+                "result":prediction[0][0]
             })
             response.headers.add('Access-Control-Allow-Origin','*')
             return response
