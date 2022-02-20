@@ -28,8 +28,7 @@ model=api.model('Parameters',
 predictor=keras.models.load_model('heart_model')
 @name_space.route("/")
 class MainClass(Resource):
-    def get(self):
-        return send_from_directory(app.static_folder, 'index.html')
+   
     def options(self):
         response=make_response()
         response.headers.add("Access-Control-Allow-Origin","*")
@@ -65,7 +64,9 @@ class MainClass(Resource):
                 "status":"Prediction Could not be made",
                 "error":str(error)
             })
-
+@app.route('/')
+def serve():
+    return send_from_directory(app.static_folder, 'index.html')
 
 if __name__=="__main__":
     app.run()
