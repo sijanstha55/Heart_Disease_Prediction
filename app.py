@@ -1,9 +1,9 @@
 from flask import Flask, request,jsonify,make_response, send_from_directory
 from flask_restx import Api, Resource, fields
-
+import pandas as pd
 from flask_cors import CORS,cross_origin
 from tensorflow import keras
-
+import pickle
 import numpy as np
 
 app=Flask(__name__,static_folder='heart_frontend/build',static_url_path='')
@@ -13,7 +13,7 @@ api=Api(app=app,
         version="1.0",
         title="Heart Disease Prediction")
 
-name_space=api.namespace('',description="Prediction Api")
+name_space=api.namespace('prediction',description="Prediction Api")
 model=api.model('Parameters',
                         {'thal':fields.Integer(required=True),
                         'slope':fields.Integer(required=True),
@@ -25,7 +25,8 @@ model=api.model('Parameters',
                         'chol':fields.Integer(required=True),
 
                         })
-predictor=keras.models.load_model('heart_model')
+predictor=pickle.load(open('xgb_model_heart.pkl','rb'))
+#predictor=keras.models.load_model('heart_model')
 @name_space.route("/")
 class MainClass(Resource):
    
@@ -42,18 +43,17 @@ class MainClass(Resource):
     def post(self):
         try:
             inputValues=request.json
-            cols_to_use=['cp', 'chol', 'thalach', 'exang', 'oldpeak', 'slope', 'ca', 'thal',
-       'feature1']
+            cols_to_use=['age','sex','cp','trestbps', 'chol','fbs','restecg', 'thalach', 'exang', 'oldpeak', 'slope', 'ca', 'thal']
             
             data=[inputValues[x] for x in cols_to_use]
-            print(data)
-            prediction=predictor.predict(np.array([data]))
+            data=pd.DataFrame([data],columns=cols_to_use)
+            prediction=predictor.predict(data)
             
             types={0:'No',1:'Yes'}
             response=jsonify({
                 "statusCode":200,
                 "status":"Prediction made",
-                "result":prediction[0][0]
+                "result":prediction[0]
             })
             response.headers.add('Access-Control-Allow-Origin','*')
             return response

@@ -24,7 +24,7 @@ function App() {
     cp:3,
     oldpeak:2.3,
     exang:1,
-    feature1:2.4,
+  
     ca:5,
     thalach:2,
     chol:200,
@@ -76,23 +76,7 @@ function App() {
     event.preventDefault();
     setLoading(false);
   };
-    /*fetch('/time').then(res=>res.json()).then(data=>{
-      setResult(data.time)
-    });
-    event.preventDefault();
-    setLoading=false
-
-  };
-  const {age,sex,cp}=inputValues;
-
-  /*useEffect(()=>{
-    fetch('/time').then(res=> res.json()).then(data=>{
-      setCurrentTime(data.time);
-    });
-  });
-  handleChange=(event)=>{
-
-  }*/
+   
 
   
   
