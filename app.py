@@ -2,9 +2,9 @@ from flask import Flask, request,jsonify,make_response, send_from_directory
 from flask_restx import Api, Resource, fields
 import pandas as pd
 from flask_cors import CORS,cross_origin
-from tensorflow import keras
+#from tensorflow import keras
 import pickle
-import numpy as np
+#import numpy as np
 
 app=Flask(__name__,static_folder='heart_frontend/build',static_url_path='')
 CORS(app)
