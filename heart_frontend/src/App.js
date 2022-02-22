@@ -200,7 +200,7 @@ function App() {
         </Button>}
         modal
         nested>
-          <p>You have {result*100} percent chance of having a heart disease!</p>
+          <p>{result}</p>
         </Popup>
         </Form.Group>
       </Form>
