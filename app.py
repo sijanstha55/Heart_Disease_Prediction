@@ -25,7 +25,7 @@ model=api.model('Parameters',
                         'chol':fields.Integer(required=True),
 
                         })
-file_name = "xgb_model_heart.pkl"
+file_name = "./xgb_model_heart.pkl"
 predictor=pickle.load(open(file_name,'rb'))
 #predictor=keras.models.load_model('heart_model')
 @name_space.route("/")
