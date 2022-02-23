@@ -12,7 +12,7 @@ git commit -m 'Backend App' <br />
 git push heroku master <br />
  
 # Frontend React
-The deployment is similar in case of frontend part too except you need a different project name.
+The deployment is similar in case of frontend part too except you need a different project name. Inside the folder 'heart_frontend' run the following commands.
 
 heroku login <br />
 heroku git:remote -a <YOUR FRONTEND PROJECT NAME> <br />
