@@ -1,7 +1,7 @@
 # Heart_Disease_Prediction
 
 This system contains two parts: Frontend (React) and Backend (Flask-Python). Both of these are deployed separately in Heroku but it is possible to do it together. 
-
+You can check the <a href='https://github.com/sijanstha55/Heart_Disease_Prediction/blob/master/Heart_Disease_UCI.ipynb'>notebook</a> to perform Exploratory Data Analysis, train a model and saving the model.
 # Backend Flask-Python
 Flask is used as backend and in the project folder you can run the following command to do run it:
 
